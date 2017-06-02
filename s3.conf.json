@@ -1,0 +1,15 @@
+{
+  "credentials" : {
+    "accessKeyID" : "",
+    "awsSecretKey" : ""
+  },
+  "buckets" : [
+      {
+          "id" : "",
+          "name" : "",
+          "label" : "",
+          "root" : "",
+          "website" : ""
+      }
+    ]
+}

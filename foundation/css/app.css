@@ -1,0 +1,41 @@
+.slim-list {
+  line-height: 0.4rem;
+}
+
+.label {
+  border-radius: 10px;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.label.primary {
+  background: #1779ba;  
+  color: white;
+}
+span.label.primary a {
+  color: white; 
+}
+
+.label.folder {
+  background: #ffae00;  
+  color: black;
+}
+span.label.folder a {
+  color: black; 
+}
+
+.label.video {
+  background: #cc4b37;
+  color: #0a0a0a; 
+}
+span.label.video a {
+  color: #0a0a0a; 
+}
+
+.label.file {
+  background: #3adb76;
+  color: #0a0a0a; 
+}
+span.label.file a {
+  color: #0a0a0a; 
+}
