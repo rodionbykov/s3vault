@@ -1,12 +1,16 @@
+<cfoutput>
 <nav aria-label="You are here:" role="navigation">
   <ul class="breadcrumbs">
-    <li><a href="#">Home</a></li>
-    <li><a href="#">Features</a></li>    
-    <li>
-      <span class="show-for-sr">Current: </span> Cloning
-    </li>
+    <li><a href="index.cfm?do=home.go&amp;buid=#rc.bucket.id#">#HTMLEditFormat(rc.bucket.label)#</a></li>    
+    <cfset arrPath = ListToArray(rc.go, "/") />
+    <cfset path = "" />
+    <cfloop array="#arrPath#" index="p">
+    <cfset path = path & "/" & p />
+    <li><a href="index.cfm?do=home.go&amp;buid=#rc.bucket.id#&amp;go=#ToBase64(path)#">#HTMLEditFormat(p)#</a></li>    
+    </cfloop>    
   </ul>
 </nav>
+</cfoutput>
 
 <div class="row">
   <div class="large-12 columns">
@@ -16,13 +20,13 @@
     <cfset path = ReplaceNoCase(rc.qryDirectory.directory, rc.bucket.root, "", "ALL") />
     <cfif rc.qryDirectory.type EQ "Dir">
         <li>
-          <span class="label folder"><i class="fi-folder"></i> <a href="index.cfm?do=home.go&amp;buid=#rc.bucket.id#&amp;go=#ToBase64(path & "/" & rc.qryDirectory.name)#">#rc.qryDirectory.name#</a></span>
+          <span class="label folder"><i class="fi-folder"></i> <a href="index.cfm?do=home.go&amp;buid=#rc.bucket.id#&amp;go=#ToBase64(path & "/" & rc.qryDirectory.name, "utf-8")#">#rc.qryDirectory.name#</a></span>
         </li>
     <cfelse>
       <cfset ext = ListLast(rc.qryDirectory.name, ".") />
       <cfif ext EQ "mp4">
         <li>
-          <span class="label video"><i class="fi-play-video"></i> <a href="index.cfm?do=home.vu&amp;buid=#rc.bucket.id#&amp;p=#ToBase64(path)#&amp;o=#ToBase64(rc.qryDirectory.name)#">#rc.qryDirectory.name#</a></span>
+          <span class="label video"><i class="fi-play-video"></i> <a href="index.cfm?do=home.vu&amp;buid=#rc.bucket.id#&amp;p=#ToBase64(path)#&amp;o=#ToBase64(rc.qryDirectory.name, "utf-8")#">#rc.qryDirectory.name#</a></span>
           <span class="label primary">#fncFileSize(rc.qryDirectory.size)# <a target="_blank" href="#rc.bucket.website##path#/#rc.qryDirectory.name#"><i class="fi-download"></i></a></span>
         </li>
       <cfelse>
@@ -31,8 +35,7 @@
           <span class="label primary">#fncFileSize(rc.qryDirectory.size)#</span>
         </li>
       </cfif>
-    </cfif>
-    <br />
+    </cfif>    
     </cfoutput>
     </ul>
   </div>

@@ -18,7 +18,7 @@
 
     <cfparam name="rc.go" default="/" />
     <cfif Len(rc.go) GT 1>
-      <cfset rc.go = ToBinary(rc.go) />
+      <cfset rc.go = ToString(ToBinary(rc.go), "utf-8") />
     </cfif>
 
     <cfdirectory directory="#rc.bucket.root##rc.go#" action="list" name="rc.qryDirectory" sort="name" recurse="false" />
@@ -33,11 +33,11 @@
     <cfparam name="rc.o" default="" />
 
     <cfif Len(rc.p) GT 1>
-      <cfset rc.p = ToBinary(rc.p) />
+      <cfset rc.p = ToString(ToBinary(rc.p), "utf-8") />
     </cfif>
     
     <cfif Len(rc.o) GT 0>
-      <cfset rc.o = ToBinary(rc.o) />
+      <cfset rc.o = ToString(ToBinary(rc.o), "utf-8") />
     </cfif>
 
     <cfdirectory directory="#rc.bucket.root##rc.p#" action="list" name="rc.qryDirectory" sort="name" recurse="false" />

@@ -1,5 +1,9 @@
 .slim-list {
-  line-height: 0.4rem;
+  line-height: 1.75rem;
+}
+
+.slim-list li.current {
+  background-color: #E0E0E0;
 }
 
 .label {
@@ -26,10 +30,10 @@ span.label.folder a {
 
 .label.video {
   background: #cc4b37;
-  color: #0a0a0a; 
+  color: white; 
 }
 span.label.video a {
-  color: #0a0a0a; 
+  color: white; 
 }
 
 .label.file {
