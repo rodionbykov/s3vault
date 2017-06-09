@@ -1,4 +1,9 @@
 {
+  "labels" : {
+    "header" : "S3 Vault",
+    "title" : "S3 Vault powered by Lucee",
+    "home" : "Home"
+  },
   "credentials" : {
     "accessKeyID" : "",
     "awsSecretKey" : ""
@@ -6,6 +11,13 @@
   "buckets" : [
       {
           "id" : "",
+          "name" : "",
+          "label" : "",
+          "root" : "",
+          "website" : ""
+      },
+      {
+          "id" : "", 
           "name" : "",
           "label" : "",
           "root" : "",

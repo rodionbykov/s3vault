@@ -25,11 +25,11 @@ component extends = "framework.one" {
     }
 
     function setupRequest(){
-        
+        REQUEST.labels = readConfig().labels;
     }    
 
     function readConfig(){
-        var jsonConfig = FileRead('s3.conf.json');        
+        var jsonConfig = FileRead('s3.conf.json');
         return DeserializeJSON(jsonConfig);
     }
 

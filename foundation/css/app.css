@@ -14,32 +14,40 @@
 
 .label.primary {
   background: #1779ba;  
-  color: white;
+  color: #fefefe;
 }
 span.label.primary a {
-  color: white; 
+  color: #fefefe; 
 }
 
 .label.folder {
   background: #ffae00;  
-  color: black;
+  color: #0a0a0a;
 }
 span.label.folder a {
-  color: black; 
+  color: #0a0a0a; 
 }
 
 .label.video {
   background: #cc4b37;
-  color: white; 
+  color: #fefefe; 
 }
 span.label.video a {
-  color: white; 
+  color: #fefefe; 
 }
 
-.label.file {
+.label.audio {
   background: #3adb76;
   color: #0a0a0a; 
 }
-span.label.file a {
+span.label.audio a {
   color: #0a0a0a; 
+}
+
+.label.file {
+  background: #767676;
+  color: #fefefe; 
+}
+span.label.file a {
+  color: #fefefe; 
 }
