@@ -1,0 +1,13 @@
+RewriteEngine On
+
+# If trailing slash and real directory, then append index.cfm and proxy it to Tomcat/Railo:
+  RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d
+  RewriteRule ^(.+/)$ http://%{HTTP_HOST}:8888%{REQUEST_URI}index.cfm [P]
+
+# If it's a real file (and we haven't proxied to Tomcat, so it must be static), just serve it:
+  RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f
+  RewriteRule . - [L]
+
+RewriteRule ^([a-zA-Z0-9/_-]*)go/([a-zA-Z0-9_-]+)/(((\?|\&)(sort|order)\=([^&]+))*)$ http://%{HTTP_HOST}:8888/$1/index.cfm?do=home.go&buid=$2$3 [NE,P]
+RewriteRule ^([a-zA-Z0-9/_-]*)go/([a-zA-Z0-9_-]+)/([a-zA-Z0-9+=/-]+)/(((\?|\&)(sort|order)\=([^&]+))*)$ http://%{HTTP_HOST}:8888/$1/index.cfm?do=home.go&buid=$2&go=$3$4 [NE,P]
+RewriteRule ^([a-zA-Z0-9/_-]*)vu/([a-zA-Z0-9_-]+)/([a-zA-Z0-9+=/-]+)/([a-zA-Z0-9+=/-]+)$ http://%{HTTP_HOST}:8888/$1/index.cfm?do=home.vu&buid=$2&p=$3&o=$4 [NE,P]

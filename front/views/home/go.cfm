@@ -6,6 +6,6 @@
   </div>
 
   <div class="large-4 columns">
-    <cf_sorting link="index.cfm?do=home.go&amp;buid=#rc.bucket.id#&amp;go=#ToBase64(rc.go)#" sort="#rc.sort#" order="#rc.order#" />
+    <cf_sorting link="#APPLICATION.siteroot#/go/#rc.bucket.id#/#ToBase64(rc.go)#/" sort="#rc.sort#" order="#rc.order#" />
   </div>
 </div>

@@ -13,7 +13,7 @@ component extends = "framework.one" {
         defaultSubsystem = 'front',
         defaultSection = 'home',
         defaultItem = 'welcome',
-        reloadApplicationOnEveryRequest = true,
+        reloadApplicationOnEveryRequest = false,
         generateSES = false,
         SESOmitIndex = false,
         diLocations = 'model,controllers',
@@ -22,6 +22,7 @@ component extends = "framework.one" {
 
     function setupApplication(){
         APPLICATION.buckets = readConfig().buckets;
+        APPLICATION.siteroot = ReplaceNoCase(CGI.script_name, "/index.cfm", "");
     }
 
     function setupRequest(){

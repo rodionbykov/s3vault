@@ -9,7 +9,7 @@
           <a href="##">#REQUEST.labels.home#</a>
           <ul class="menu vertical">
             <cfloop array="#APPLICATION.buckets#" index="i">
-            <li><a href="index.cfm?do=home.go&amp;buid=#i.id#">#i.label#</a></li>
+            <li><a href="#APPLICATION.siteroot#/go/#i.id#/">#i.label#</a></li>
             </cfloop>
           </ul>
         </li>
