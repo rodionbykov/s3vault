@@ -37,13 +37,16 @@
     <cfargument name="rc" />
 
     <cfparam name="rc.go" default="#ToBase64("/", "utf-8")#" />
-
+    
     <cfif NOT StructKeyExists(rc.bucket, "id")>
       <cfthrow message = "Invalid Bucket" />
     </cfif>
 
     <cftry>
+      <cfset rc.go = ReplaceNoCase(rc.go, "_", "/", "ALL") />
+      <cfset rc.go = ReplaceNoCase(rc.go, " ", "+", "ALL") />
       <cfset rc.go = ToString(ToBinary(rc.go), "utf-8") />
+
       <cfcatch type="any">
         <cfthrow message = "Invalid Location" />
       </cfcatch>
@@ -63,15 +66,21 @@
     <cfargument name="rc" />
 
     <cfparam name="rc.p" default="#ToBase64("/", "utf-8")#" />
-    <cfparam name="rc.o" default="" />
+    <cfparam name="rc.o" default="" />    
 
     <cfif NOT StructKeyExists(rc.bucket, "id")>
       <cfthrow message = "Invalid Bucket" />
     </cfif>
 
     <cftry>
+      <cfset rc.p = ReplaceNoCase(rc.p, "_", "/", "ALL") />
+      <cfset rc.p = ReplaceNoCase(rc.p, " ", "+", "ALL") />
       <cfset rc.p = ToString(ToBinary(rc.p), "utf-8") />
+
+      <cfset rc.o = ReplaceNoCase(rc.o, "_", "/", "ALL") />
+      <cfset rc.o = ReplaceNoCase(rc.o, " ", "+", "ALL") />
       <cfset rc.o = ToString(ToBinary(rc.o), "utf-8") />
+      
       <cfcatch type="any">
         <cfthrow message = "Invalid Resource" />
       </cfcatch>

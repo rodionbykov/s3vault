@@ -10,18 +10,18 @@
 <cfset path = ReplaceNoCase(ATTRIBUTES.directory.directory, ATTRIBUTES.bucket.root, "", "ALL") />
 <cfif ATTRIBUTES.directory.type EQ "Dir">
     <li>
-      <span class="label folder"><i class="fi-folder"></i> <a href="#APPLICATION.siteroot#/go/#ATTRIBUTES.bucket.id#/#ToBase64(path & "/" & ATTRIBUTES.directory.name, "utf-8")#/">#ATTRIBUTES.directory.name#</a></span>
+      <span class="label folder"><i class="fi-folder"></i> <a href="#APPLICATION.siteroot#/go/#ATTRIBUTES.bucket.id#/#vaultEncode(path & "/" & ATTRIBUTES.directory.name)#/">#ATTRIBUTES.directory.name#</a></span>
     </li>
 <cfelse>
   <cfset ext = ListLast(ATTRIBUTES.directory.name, ".") />
   <cfif ListFindNoCase("mp4,webm,ogv", ext)>
-    <li <cfif ATTRIBUTES.directory.name EQ ATTRIBUTES.object>class="current"</cfif>>
-      <span class="label video"><i class="fi-play-video"></i> <a href="#APPLICATION.siteroot#/vu/#ATTRIBUTES.bucket.id#/#ToBase64(path)#/#ToBase64(ATTRIBUTES.directory.name, "utf-8")#">#ATTRIBUTES.directory.name#</a></span>
+    <li <cfif ATTRIBUTES.directory.name EQ ATTRIBUTES.object>class="current"</cfif>>     
+      <span class="label video"><i class="fi-play-video"></i> <a href="#APPLICATION.siteroot#/vu/#ATTRIBUTES.bucket.id#/#vaultEncode(path)#/#vaultEncode(ATTRIBUTES.directory.name)#">#ATTRIBUTES.directory.name#</a></span>
       <span class="label primary">#fncFileSize(ATTRIBUTES.directory.size)# <a target="_blank" href="#ATTRIBUTES.bucket.website##path#/#ATTRIBUTES.directory.name#"><i class="fi-download"></i></a></span>
     </li>
   <cfelseif ListFindNoCase("mp3,wav,ogv", ext)>
     <li <cfif ATTRIBUTES.directory.name EQ ATTRIBUTES.object>class="current"</cfif>>
-      <span class="label audio"><i class="fi-sound"></i> <a href="#APPLICATION.siteroot#/vu/#ATTRIBUTES.bucket.id#/#ToBase64(path)#/#ToBase64(ATTRIBUTES.directory.name, "utf-8")#">#ATTRIBUTES.directory.name#</a></span>
+      <span class="label audio"><i class="fi-sound"></i> <a href="#APPLICATION.siteroot#/vu/#ATTRIBUTES.bucket.id#/#vaultEncode(path)#/#vaultEncode(ATTRIBUTES.directory.name)#">#ATTRIBUTES.directory.name#</a></span>
       <span class="label primary">#fncFileSize(ATTRIBUTES.directory.size)# <a target="_blank" href="#ATTRIBUTES.bucket.website##path#/#ATTRIBUTES.directory.name#"><i class="fi-download"></i></a></span>
     </li>
   <cfelse>
@@ -52,5 +52,9 @@ function fncFileSize(size) {
 	if (size lt 1024^2) return "#round(size / 1024)#KB";
 	if (size lt 1024^3) return "#decimalFormat(size/1024^2)#MB";
 	return "#decimalFormat(size/1024^3)#GB";
+}
+
+function vaultEncode(str) {
+  return ReplaceNoCase(ToBase64(str, "utf-8"), "/", "_", "ALL");
 }
 </cfscript>

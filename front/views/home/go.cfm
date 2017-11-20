@@ -6,6 +6,12 @@
   </div>
 
   <div class="large-4 columns">
-    <cf_sorting link="#APPLICATION.siteroot#/go/#rc.bucket.id#/#ToBase64(rc.go)#/" sort="#rc.sort#" order="#rc.order#" />
+    <cf_sorting link="#APPLICATION.siteroot#/go/#rc.bucket.id#/#vaultEncode(rc.go)#/" sort="#rc.sort#" order="#rc.order#" />
   </div>
 </div>
+
+<cfscript>
+function vaultEncode(str) {
+  return ReplaceNoCase(ToBase64(str, "utf-8"), "/", "_", "ALL");
+}
+</cfscript>

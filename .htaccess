@@ -9,5 +9,5 @@ RewriteEngine On
   RewriteRule . - [L]
 
 RewriteRule ^([a-zA-Z0-9/_-]*)go/([a-zA-Z0-9_-]+)/(((\?|\&)(sort|order)\=([^&]+))*)$ http://%{HTTP_HOST}:8888/$1/index.cfm?do=home.go&buid=$2$3 [NE,P]
-RewriteRule ^([a-zA-Z0-9/_-]*)go/([a-zA-Z0-9_-]+)/([a-zA-Z0-9+=/-]+)/(((\?|\&)(sort|order)\=([^&]+))*)$ http://%{HTTP_HOST}:8888/$1/index.cfm?do=home.go&buid=$2&go=$3$4 [NE,P]
-RewriteRule ^([a-zA-Z0-9/_-]*)vu/([a-zA-Z0-9_-]+)/([a-zA-Z0-9+=/-]+)/([a-zA-Z0-9+=/-]+)$ http://%{HTTP_HOST}:8888/$1/index.cfm?do=home.vu&buid=$2&p=$3&o=$4 [NE,P]
+RewriteRule ^([a-zA-Z0-9/_-]*)go/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_+=]+)/(((\?|\&)(sort|order)\=([^&]+))*)$ http://%{HTTP_HOST}:8888/$1/index.cfm?do=home.go&buid=$2&go=$3$4 [NE,P]
+RewriteRule ^([a-zA-Z0-9/_-]*)vu/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_+=]+)/([a-zA-Z0-9_+=]+)$ http://%{HTTP_HOST}:8888/$1/index.cfm?do=home.vu&buid=$2&p=$3&o=$4 [NE,P]

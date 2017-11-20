@@ -16,7 +16,7 @@
       
       <cfloop array="#arrPath#" index="p">
         <cfset currentPath = currentPath & "/" & p />
-        <li><a href="#APPLICATION.siteroot#/go/#ATTRIBUTES.bucket.id#/#ToBase64(currentPath)#/">#HTMLEditFormat(p)#</a></li>    
+        <li><a href="#APPLICATION.siteroot#/go/#ATTRIBUTES.bucket.id#/#vaultEncode(currentPath)#/">#HTMLEditFormat(p)#</a></li>    
       </cfloop>    
     </cfif>
 
@@ -30,3 +30,9 @@
 </nav>
 </cfoutput>
 </cfif>
+
+<cfscript>
+function vaultEncode(str) {
+  return ReplaceNoCase(ToBase64(str, "utf-8"), "/", "_", "ALL");
+}
+</cfscript>
